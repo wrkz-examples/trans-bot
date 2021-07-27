@@ -27,9 +27,6 @@ EMOJI_OK_BOX = "\U0001F197"
 EMOJI_OK_HAND = "\U0001F44C"
 EMOJI_INFORMATION = "\u2139"
 
-bot_help_admin_shutdown = "Restart bot."
-bot_help_admin_maintenance = "Bot to be in maintenance mode ON / OFF"
-
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
@@ -49,9 +46,9 @@ async def get_prefix(bot, message):
     """Gets the prefix for the guild"""
     pre_cmd = config.discord.prefixCmd
     if isinstance(message.channel, discord.DMChannel):
-        extras = [pre_cmd, 'm!', 'moon!', '?', '.', '+', '!', '-']
+        extras = [pre_cmd, 'bao!', '?', '.', '+', '!', '-']
         return when_mentioned_or(*extras)(bot, message)
-    extras = [pre_cmd, 'm!', 'moon!']
+    extras = [pre_cmd, 'baobot!', 'bao!']
     return when_mentioned_or(*extras)(bot, message)
 
 
