@@ -80,8 +80,11 @@ class Events(commands.Cog):
                     translated = user_translated(message.content)
                     if translated:
                        await channel.send("{}: {}#{}/{}: {}".format(message.channel.mention, message.author.name, message.author.discriminator, message.author.id, translated['translated']))
+                except (discord.Forbidden, discord.errors.Forbidden) as e:
+                    msg = await botLogChan.send('Failed to send message to channel {}/{}'.format(channel.name, channel.id))
                 except Exception as e:
                     traceback.print_exc(file=sys.stdout)
+                    msg = await botLogChan.send(traceback.format_exc())
             else:
                 msg = await botLogChan.send("Can not find channel ID: {}".format(to_channel_id))
 
