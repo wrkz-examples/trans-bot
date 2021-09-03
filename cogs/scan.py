@@ -20,9 +20,6 @@ class Scan(commands.Cog):
     @commands.has_permissions(ban_members=True)
     @commands.command(usage='scanname', aliases=['scannick'], description="Scan similar name")
     async def scanname(self, ctx, contain: str, option: str=None):
-        if str(ctx.author.id) not in [str(each) for each in Bot.MOD_LIST]:
-            return
-
         if len(contain) < 3:
             await ctx.send(f'{ctx.author.mention} criteria too short.')
             return
