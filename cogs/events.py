@@ -42,9 +42,9 @@ class Events(commands.Cog):
         account_created = member.created_at
         account_joined = member.joined_at
         if (datetime.utcnow() - account_created).total_seconds() >= 7200:
-            to_send = '{0.mention} (`{1.id}`) has joined {2.name}!'.format(member, member, member.guild)
+            to_send = '{0.name} / (`{1.id}`) has joined {2.name}!'.format(member, member, member.guild)
         else:
-            to_send = '{0.mention} (`{1.id}`) has joined {2.name}! **Warning!!!**, {3.mention} just created his/her account less than 2hr.'.format(member, member, member.guild, member)
+            to_send = '{0.name} / (`{1.id}`) has joined {2.name}! **Warning!!!**, {3.mention} just created his/her account less than 2hr.'.format(member, member, member.guild, member)
         await botLogChan.send(to_send)
         return
 
