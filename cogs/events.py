@@ -21,7 +21,7 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
         botLogChan = self.bot.get_channel(id=int(config.discord.logchan))
-        if before.nick != after.nick:
+        if before.nick != after.nick and after.bot == False:
             if after.nick is None:
                 await botLogChan.send(f'{before.id}: {before.name} changes **nick** to default nick.')
             else:
